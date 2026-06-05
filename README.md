@@ -18,7 +18,7 @@ Il utilise **Gunicorn** (serveur WSGI), **Nginx** (proxy inverse) et **Certbot**
 - Un serveur **Linux** (Debian/Ubuntu recommandé) avec accès **root** (`sudo`)
 - Un **nom de domaine** pointant vers l’IP publique du serveur (DNS déjà configuré)
 - Les ports **80** et **443** ouverts dans le pare‑feu
-- Votre application WSGI Python doit exister sous forme d’un **fichier .py** contenant une variable callable (ex: `app`)
+- Votre application WSGI Python doit exister sous forme d’un **fichier.py** contenant une variable callable (ex: `app`)
 
 ## 🔧 Utilisation
 1. **Téléchargez le script** sur votre serveur :
@@ -35,9 +35,9 @@ Il utilise **Gunicorn** (serveur WSGI), **Nginx** (proxy inverse) et **Certbot**
   sudo ./setup_https_wsgi.sh
   ````
 Répondez aux questions interactives :
-- Nom de domaine (ex: app.example.com)
+- Nom de domaine (ex: monapp.example.com)
 - Email pour Let's Encrypt (notifications de renouvellement)
-- Chemin complet du fichier WSGI (ex: /opt/app/app.py)
+- Chemin complet du fichier WSGI (ex: /home/user/monapp/app.py)
 - Nom de la variable WSGI dans ce fichier (souvent app)
 - Port local pour l’application (par défaut 8000)
 - Le script s’occupe du reste : installation, configuration, démarrage et activation HTTPS.
@@ -51,7 +51,7 @@ Répondez aux questions interactives :
 ## 🧪 Vérification
 Après exécution, testez l’accès sécurisé :
 ```bash
-curl -I https://votredomaine.com          # Doit répondre en HTTPS
+curl -I https://monapp.example.com        # Doit répondre en HTTPS
 systemctl status wsgi_app                 # Vérifier que Gunicorn tourne
 journalctl -u wsgi_app -n 20              # Logs de l'application
 certbot certificates                      # Voir les certificats
