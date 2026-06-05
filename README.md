@@ -25,7 +25,7 @@ Il utilise **Gunicorn** (serveur WSGI), **Nginx** (proxy inverse) et **Certbot**
    ```bash
    wget https://raw.githubusercontent.com/sebastienbats/reverse-proxy-https-WSGI-python/main/setup_https_wsgi.sh
    ```
-   # ou créez le fichier manuellement avec nano/vim
+   ou créez le fichier manuellement avec nano/vim
 2. Rendez-le exécutable :
   ```bash
   chmod +x setup_https_wsgi.sh
