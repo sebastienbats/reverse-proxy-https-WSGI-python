@@ -52,12 +52,11 @@ Répondez aux questions interactives :
 Après exécution, testez l’accès sécurisé :
 ```bash
 curl -I https://votredomaine.com
+curl -I https://votredomaine.com          # Doit répondre en HTTPS
+systemctl status wsgi_app                 # Vérifier que Gunicorn tourne
+journalctl -u wsgi_app -n 20              # Logs de l'application
+certbot certificates                      # Voir les certificats
 ```
-# Doit retourner HTTP/2 200 ou 302 (selon votre app)
-systemctl status wsgi_app      # statut de votre application
-journalctl -u wsgi_app -f      # logs temps réel
-certbot certificates           # affiche les certificats installés
-
 ## ⚙️ Personnalisation
 - Nombre de workers Gunicorn : modifiez la ligne --workers 3 dans /etc/systemd/system/wsgi_app.service.
 - Socket Unix (au lieu du port TCP) : remplacez --bind 127.0.0.1:8000 par --bind unix:/tmp/wsgi_app.sock et adaptez proxy_pass dans Nginx (proxy_pass http://unix:/tmp/wsgi_app.sock;).
