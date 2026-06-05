@@ -51,7 +51,6 @@ Répondez aux questions interactives :
 ## 🧪 Vérification
 Après exécution, testez l’accès sécurisé :
 ```bash
-curl -I https://votredomaine.com
 curl -I https://votredomaine.com          # Doit répondre en HTTPS
 systemctl status wsgi_app                 # Vérifier que Gunicorn tourne
 journalctl -u wsgi_app -n 20              # Logs de l'application
